@@ -160,7 +160,7 @@ if __name__=="__main__":
 
        sb_con = tk.Scrollbar(frame_con)
        sb_con.pack(side=tk.RIGHT, fill=tk.Y)
-       text_con = tk.Text(frame_con, height=28, width=60, yscrollcommand=sb_con.set)
+       text_con = tk.Text(frame_con, height=20, width=60, yscrollcommand=sb_con.set)
        text_con.pack(side=tk.LEFT, fill=tk.BOTH)
        sb_con.config(command=text_con.yview)
 
