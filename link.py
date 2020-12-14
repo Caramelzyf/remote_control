@@ -9,7 +9,7 @@ import tkinter as tk
 import process
 import base64
 import information
-
+import file_manage
 threaddic = {}
 
 def client_link_button(server_ip, server_port, clientlist, text_key, entry_screen_shot_str, listbox_process, nextprodic, prodic, hostvarlist):
@@ -63,7 +63,8 @@ def client_link_button(server_ip, server_port, clientlist, text_key, entry_scree
                      elif data[:15] == "informa-static-":
                             information.thread_show_static(hostvarlist, data)
                      elif data[:12] == "informa-dyn-":
-                            information.thread_show_dyn(hostvarlist, data)                     
+                            information.thread_show_dyn(hostvarlist, data)
+
        except Exception as a:
               message = messagebox.showerror(title = "错误", message = str(a))
               return False
@@ -124,7 +125,24 @@ def server_link_button(server_port, link_state, server_ip, server_port_label, cl
                                    elif data == "informa":
                                           information.thread_get_info(serverlist, threaddic)
                                    elif data == "informaend":
-                                          information.thread_close_get_info(threaddic)                                          
+                                          information.thread_close_get_info(threaddic)
+                                   elif data == "create":
+                                          path=""
+                                          file_manage.thread_create(serverlist, threaddic, path)
+                                   elif data == "delete":
+                                          path=""
+                                          file_manage.thread_delete(serverlist, threaddic, path)
+                                   elif data == "view":
+                                          path=""
+                                          text_con=""
+                                          file_manage.thread_view(serverlist, threaddic, path,text_con)
+                                   elif data == "load":
+                                          path=""
+                                          file_manage.thread_load(serverlist, threaddic, path)
+                                   elif data == "ex":
+                                          path=""
+                                          file_manage.thread_ex(serverlist, threaddic, path)
+
                      break
               conn.close()
        except OSError:

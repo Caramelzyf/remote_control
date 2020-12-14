@@ -185,7 +185,7 @@ def thread_screen_press(serverlist,sleep_time,lasting_time,threaddic):
 def begin_screen(clientlist, sleep_time,lasting_time):
       if len(clientlist) > 0 and "screen" not in clientlist:
             clientlist.append("screen")
-            clientlist[0].send(("screenbegin-" + sleep_time + "-" + lasting_time).encode())
+            clientlist[0].send(("screenbegin-" + sleep_time + "-" + lasting_time).encode("utf-8"))
       elif "screen" in clientlist:
             message = messagebox.showinfo(title = "出错", message = "正在监控")
 
@@ -200,7 +200,7 @@ def thread_screen_save(filename,data,path_save,clientlist):  #path_save是用户
             posi = path_save.find("\\", posi + 2)
             path_save = path_save[:posi] + "\\" + path_save[posi:]
         if os.path.isabs(path_save) == False:
-            clientlist[0].send("screenend".encode())
+            clientlist[0].send("screenend".encode("utf-8"))
             clientlist.pop("screen")
             message = messagebox.showinfo(tltle = "路径出错", message = "请输入正确绝对路径")
             return False
@@ -211,12 +211,12 @@ def thread_screen_save(filename,data,path_save,clientlist):  #path_save是用户
 def end_key(clientlist):
       if len(clientlist) > 0 and "screen" in clientlist:
             clientlist.remove("screen")
-            clientlist[0].send("screenend".encode())
+            clientlist[0].send("screenend".encode("utf-8"))
 
 def close_screen_shot(thread,server):
     thread.stop()
     del thread
-    server.send("screen_end".encode())
+    server.send("screen_end".encode("utf-8"))
 
 def thread_close_listener(threaddic, serverlist, screen):
     if "screen" in threaddic:

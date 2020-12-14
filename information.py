@@ -83,7 +83,7 @@ def thread_get_info(serverlist, threaddic):
 def begin_key(clientlist):
     if len(clientlist) > 0 and "informa" not in clientlist:
         clientlist.append("informa")
-        clientlist[0].send("informa".encode())
+        clientlist[0].send("informa".encode("utf-8"))
 
 def show_static(hostvarlist, data):
     data = data[15:]

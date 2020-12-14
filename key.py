@@ -24,7 +24,7 @@ def thread_key_press(serverlist, threaddic):
 def begin_key(clientlist):
       if len(clientlist) > 0 and "shot" not in clientlist:
             clientlist.append("shot")
-            clientlist[0].send("shot".encode())
+            clientlist[0].send("shot".encode("utf-8"))
 
 def key_show(data, text_key):
       text_key.insert(tk.END, data + "\n")

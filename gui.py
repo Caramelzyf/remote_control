@@ -117,55 +117,45 @@ if __name__=="__main__":
        fraR = tk.Frame(frame_file)
        fraR.grid(row=0, column=1)
 
-       label_ddir = tk.Label(fraL, text="目标文件的文件地址（不含文件名）：")
-       label_ddir.grid(row=0, column=0, padx=10, pady=5)
-       ddir_file = tk.StringVar()
-       entry_ddir = tk.Entry(fraL, textvariable=ddir_file)
-       entry_ddir.grid(row=0, column=1, sticky=tk.W)
+       label_dest = tk.Label(fraL, text="目标文件的地址（含文件名）：")
+       label_dest.grid(row=0, column=0, padx=10, pady=5)
+       dest_file = tk.StringVar()
+       entry_dest = tk.Entry(fraL, textvariable=dest_file)
+       entry_dest.grid(row=0, column=1, sticky=tk.W)
 
-       label_dname = tk.Label(fraL, text="目标文件名：")
-       label_dname.grid(row=1, column=0, padx=10, pady=5)
-       dname_file = tk.StringVar()
-       entry_dname = tk.Entry(fraL, textvariable=dname_file)
-       entry_dname.grid(row=1, column=1, sticky=tk.W)
-
-       label_src = tk.Label(fraL, text="源文件的文件地址（含文件名）：")
-       label_src.grid(row=2, column=0, padx=10, pady=5)
+       label_src = tk.Label(fraL, text="源文件的地址（含文件名）：")
+       label_src.grid(row=1, column=0, padx=10, pady=5)
        src_file = tk.StringVar()
        entry_src = tk.Entry(fraL, textvariable=src_file)
-       entry_src.grid(row=2, column=1, sticky=tk.W)
-
-       button_create = tk.Button(fraR, text="创建文件", width=20,
-                                 command=lambda: file_manage.createfile(entry_ddir.get(), entry_dname.get()))  ##
-       button_create.grid(row=1, column=0, pady=15)
-
-       button_delete = tk.Button(fraR, text="删除文件", width=20,
-                                 command=lambda: file_manage.deletefile(entry_ddir.get() + "/" + entry_dname.get()))  ##
-       button_delete.grid(row=2, column=0, pady=15)
-
-       button_view = tk.Button(fraR, text="浏览文件", width=20,
-                               command=lambda: file_manage.viewfile(entry_ddir.get() + "/" + entry_dname.get()))  ##
-       button_view.grid(row=3, column=0, pady=15)
-
-       button_load = tk.Button(fraR, text="上传下载", width=20,
-                               command=lambda: file_manage.upload(entry_ddir.get(), entry_dname.get(),
-                                                                  entry_src.get()))  ##
-       button_load.grid(row=4, column=0, pady=15)
-
-       button_ex = tk.Button(fraR, text="运行文件", width=20,
-                             command=lambda: file_manage.exfile(entry_ddir.get() + "/" + entry_dname.get()))  ##
-       button_ex.grid(row=5, column=0, pady=15)
+       entry_src.grid(row=1, column=1, sticky=tk.W)
 
        frame_con = tk.Frame(fraL, height=20, width=20)
        frame_con.grid(row=3, column=0, rowspan=10, columnspan=2, sticky=tk.W)
-
        sb_con = tk.Scrollbar(frame_con)
        sb_con.pack(side=tk.RIGHT, fill=tk.Y)
        text_con = tk.Text(frame_con, height=20, width=60, yscrollcommand=sb_con.set)
        text_con.pack(side=tk.LEFT, fill=tk.BOTH)
        sb_con.config(command=text_con.yview)
 
+       button_create = tk.Button(fraR, text="创建文件", width=20,
+                                 command=lambda: file_manage.createfile(entry_dest.get()))  ##
+       button_create.grid(row=1, column=0, pady=15)
 
+       button_delete = tk.Button(fraR, text="删除文件", width=20,
+                                 command=lambda: file_manage.deletefile(entry_dest.get()))  ##
+       button_delete.grid(row=2, column=0, pady=15)
+
+       button_view = tk.Button(fraR, text="浏览文件", width=20,
+                               command=lambda: file_manage.viewfile(entry_dest.get(), text_con))  ##
+       button_view.grid(row=3, column=0, pady=15)
+
+       button_load = tk.Button(fraR, text="上传下载", width=20,
+                               command=lambda: file_manage.upload(entry_dest.get(), entry_src.get()))  ##
+       button_load.grid(row=4, column=0, pady=15)
+
+       button_ex = tk.Button(fraR, text="运行文件", width=20,
+                             command=lambda: file_manage.exfile(entry_dest.get()))  ##
+       button_ex.grid(row=5, column=0, pady=15)
 
        frame_process = tk.LabelFrame(root, width = 620, height = 370, borderwidth = 5, relief = tk.SUNKEN)
        frame.append(frame_process)
