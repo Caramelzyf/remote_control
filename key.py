@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import keyboard
 import tkinter as tk
 import socket

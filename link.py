@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import socket
 from tkinter import messagebox
 import checkerror

@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from tkinter import messagebox
 
 def link_ip_error():

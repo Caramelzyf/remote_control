@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import psutil
 import tkinter as tk
 import time
