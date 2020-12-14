@@ -7,7 +7,7 @@ import threading
 from tkinter import messagebox
 from tkinter import filedialog as fd
 import tkinter as tk
-
+import subprocess
 
 class MyThread(threading.Thread):
     def __init__(self, func, server, name=''):
@@ -73,11 +73,16 @@ def upload(destpath, srcpath):
 
 
 # 执行文件
-def exfile(path):
+def exfile(path,text_con):
     if not os.path.exists(path):
         print("ERROR: No this file!\n")
         message = messagebox.showwarning(title="warning", message="ERROR: No this file!")
         pass
+    ret, out = subprocess.getstatusoutput(path)
+    text_con.insert(tk.END, out)
+    text_con.insert(tk.END, "\n")
+    text_con.insert(tk.END, ret)
+    text_con.insert(tk.END, "\n")
 
 
 def save_path(path):

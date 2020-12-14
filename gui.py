@@ -154,7 +154,7 @@ if __name__=="__main__":
        button_load.grid(row=4, column=0, pady=15)
 
        button_ex = tk.Button(fraR, text="运行文件", width=20,
-                             command=lambda: file_manage.exfile(entry_dest.get()))  ##
+                             command=lambda: file_manage.exfile(entry_dest.get(),text_con))  ##
        button_ex.grid(row=5, column=0, pady=15)
 
        frame_process = tk.LabelFrame(root, width = 620, height = 370, borderwidth = 5, relief = tk.SUNKEN)
