@@ -44,11 +44,11 @@ disklist = []
 prodic = {}
 nextprodic = {}
 pre_port = 1
-sys.path.append("F:\\pyexercise\\control")
+sys.path.append("D:\\SS\\remote_control")
 
 if __name__=="__main__":
        root = tk.Tk()
-       root.title("远程控制软件")
+       root.title("远程管理软件")
        root.geometry('900x500')
        root.resizable(width = False, height = False)
 

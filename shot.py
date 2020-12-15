@@ -31,7 +31,7 @@ class MyThread(threading.Thread):
         self.running.clear()       # 将线程终止 
 
 def screen_shot(server,sleep_time,lasting_time, running):
-    path_i="D:\\new"
+    path_i="D:\\SS\\remote_control\\new"
     timedic = {"屏幕变化":"屏幕变化","不限":"不限","1s":1, "2s":2, "5s":5, "10s":10, "30s":30, "1min":60, "5min":300, "10min":600, "30min":1800, "1h":3600, "12h":43200, "24h":86400}
     start = time.time()
     # 获取桌面
